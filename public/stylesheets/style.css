@@ -1,0 +1,34 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+form * {
+  display: block;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 980px) /* Desktop */ {
+  body {
+    background: red;
+  }
+  footer:after { content: "Desktop Layout"; display: block;}
+}
+
+@media screen  and (max-width: 979px) /* Tablet */ {
+  body {
+    background: blue;
+  }
+  footer:after { content: "Tablet Layout"; display: block;}
+}
+
+@media screen and (max-width: 480px) /* Mobile */ {
+  body {
+    background: green;
+  }
+  footer:after { content: "Mobile Layout"; display: block;}
+}
