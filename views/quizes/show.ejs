@@ -1,0 +1,14 @@
+<form method="get" action="/quizes/<%= question.id %>/answer">
+  <label>Question: <%= question.question %>?</label>
+  <input type="text" name="answer" value="Answer here please"/>
+  <input type="submit" value="Send"/>
+</form>
+<% if (question.Comments.length) { %>
+<p>Comments:</p>
+<ul>
+<% for (i in question.Comments) { %>
+  <li><%= question.Comments[i].text %></li>
+<% } %>
+</ul>
+<% } %>
+<a href="/quizes/<%= question.id %>/comments/new"><button type="button">Add comment</button></a>

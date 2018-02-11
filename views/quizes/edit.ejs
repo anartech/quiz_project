@@ -1,0 +1,18 @@
+<p>Edit question:</p>
+<% if (errors && errors.length) { %>
+  <p>Please, correct the following:</p>
+  <ul>
+  <% for (var i in errors) { %>
+    <li><%= errors[i].message %></li>
+  <% } %>
+  </ul>
+<% } %>
+<form method="post" action="/quizes/<%= quiz.id %>?_method=put">
+  <label>Question: </label>
+  <input type="text" name="quiz[question]" value="<%= quiz.question %>"/>
+  <label>Answer: </label>
+  <input type="text" name="quiz[answer]" value="<%= quiz.answer %>"/>
+  <a href="/quizes"><button type="button">Cancel</button></a>
+  <button type="submit">Send</button>
+  <button type="reset">Reset</button>
+</form>

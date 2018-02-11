@@ -33,8 +33,14 @@ var connection = new Sequelize(db_name, user, password,
 
 //Import table definition in quiz.js
 var quiz = connection.import(path.join(__dirname, 'quiz'));
+//Import table definition in comments.js
+var comments = connection.import(path.join(__dirname, 'comments'));
+
+comments.belongsTo(quiz);
+quiz.hasMany(comments);
 
 exports.quiz = quiz;
+exports.comments = comments;
 
 //Create and init tables
 connection.sync().then(function() {
@@ -45,8 +51,12 @@ connection.sync().then(function() {
       quiz.create({
         question: "Which is Italy's city capital",
         answer: "Rome"
+      });
+      quiz.create({
+        question: "Which is Portugal's city capital",
+        answer: "Lisboa"
       }).then(function(){
-        console.log('Initialized database with one row');
+        console.log('Initialized database');
       });
     };
   });

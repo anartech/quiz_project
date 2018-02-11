@@ -8,6 +8,7 @@ var partials = require('express-partials');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var methodOverride = require('method-override');
 
 var app = express();
 
@@ -21,9 +22,10 @@ app.use(partials());
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 app.use('/', index);
 app.use('/users', users);

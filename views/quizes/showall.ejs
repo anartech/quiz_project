@@ -1,0 +1,14 @@
+<table>
+  <% var i; for(i=0; i < questions.length; i++) { %>
+    <tr>
+      <td><a href="/quizes/<%= questions[i].id %>"><%= questions[i].question %></a></td>
+      <td><a href="/quizes/<%= questions[i].id %>/edit"><button type="button">Edit</button></a></td>
+      <td>
+        <form action="quizes/<%= questions[i].id %>?_method=delete" method="post">
+          <button type="submit" onclick='return confirm("Do you want to delete:\n\n<%= questions[i].question %>?\n\nThis cannot be undone!")'>Delete</button>
+        </form>
+      </td>
+    </tr>
+  <% } %>
+</table>
+<a href="/quizes/new"><button type="button">Create New</button></a>

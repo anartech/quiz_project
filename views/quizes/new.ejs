@@ -1,0 +1,17 @@
+<p>Add question below:</p>
+<% if (errors && errors.length) { %>
+  <p>Please, correct the following:</p>
+  <ul>
+  <% for (var i in errors) { %>
+    <li><%= errors[i].message %></li>
+  <% } %>
+  </ul>
+<% } %>
+<form method="post" action="/quizes/create">
+  <label>Question: </label>
+  <input type="text" name="quiz[question]" value="<%= quiz.question %>"/>
+  <label>Answer: </label>
+  <input type="text" name="quiz[answer]" value="<%= quiz.answer %>"/>
+  <a href="/quizes"><button type="button">Cancel</button></a>
+  <input type="submit" value="Send"/>
+</form>
