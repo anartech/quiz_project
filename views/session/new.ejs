@@ -1,0 +1,16 @@
+<h3>Login</h3>
+<% if (errors && errors.length) { %>
+  <p>Please, correct the following:</p>
+  <ul>
+  <% for (var i in errors) { %>
+    <li><%= errors[i].message %></li>
+  <% } %>
+  </ul>
+<% } %>
+<form method="post" action="/login">
+  <label>User: </label>
+  <input type="text" name="alias" value="" size="15"/>
+  <label>Password: </label>
+  <input type="password" name="password" value="" size="15"/>
+  <input type="submit" value="Login"/>
+</form>

@@ -7,8 +7,15 @@
 <p>Comments:</p>
 <ul>
 <% for (i in question.Comments) { %>
-  <li><%= question.Comments[i].text %></li>
+  <% if (question.Comments[i].published) { %>
+    <li><%= question.Comments[i].text %></li>
+  <% } else if (question.Comments[i].UserId === session.user.id) { %>
+    <li><%= question.Comments[i].text %></li>
+    <a href="/quizes/<%= question.id %>/comments/<%= question.Comments[i].id %>/publish"><button type="button">Publish</button></a>
+  <% } %>
 <% } %>
 </ul>
 <% } %>
-<a href="/quizes/<%= question.id %>/comments/new"><button type="button">Add comment</button></a>
+<% if (session.user) { %>
+  <a href="/quizes/<%= question.id %>/comments/new"><button type="button">Add comment</button></a>
+<% } %>

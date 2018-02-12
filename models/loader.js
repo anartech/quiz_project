@@ -23,24 +23,31 @@ var Sequelize = require('sequelize');
 
 //Use ORM for SQLite or Postgres
 var connection = new Sequelize(db_name, user, password,
-                              { dialect: dialect,
-                                protocol: protocol,
-                                port: port,
-                                host: host,
-                                storage: storage,   //only for SQLite
-                                omitNull: true }    //only for Postgres
+                                { dialect: dialect,
+                                  protocol: protocol,
+                                  port: port,
+                                  host: host,
+                                  storage: storage,   //only for SQLite
+                                  omitNull: true,     //only for Postgres
+                                  dialectOptions: {encrypt: true}
+                                }
                               );
 
 //Import table definition in quiz.js
 var quiz = connection.import(path.join(__dirname, 'quiz'));
 //Import table definition in comments.js
 var comments = connection.import(path.join(__dirname, 'comments'));
+//Import table definition in users.js
+var users = connection.import(path.join(__dirname, 'users'));
 
 comments.belongsTo(quiz);
+comments.belongsTo(users);
 quiz.hasMany(comments);
+users.hasMany(comments);
 
 exports.quiz = quiz;
 exports.comments = comments;
+exports.users = users;
 
 //Create and init tables
 connection.sync().then(function() {
@@ -56,7 +63,22 @@ connection.sync().then(function() {
         question: "Which is Portugal's city capital",
         answer: "Lisboa"
       }).then(function(){
-        console.log('Initialized database');
+        console.log('Initialized Quiz table');
+      });
+    };
+  });
+  users.count().then(function (count){
+    //If empty, add a row
+    if(count === 0) {
+      users.create({
+        alias: "admin",
+        password: "1234"
+      });
+      users.create({
+        alias: "pepe",
+        password: "1234"
+      }).then(function(){
+        console.log('Initialized Users table');
       });
     };
   });

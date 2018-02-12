@@ -4,8 +4,8 @@
     <title>Quiz</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="icon" href="mario.png" type="image/png" />
+    <link rel="icon" href="mario.png" type="image/png"/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
   </head>
   <body>
     <header>
@@ -15,6 +15,15 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/quizes">Play</a></li>
+        <li>
+          <% if (!session.user) { %>
+            <a href="/login">Login</a>
+            <a href="/users/signup">Signup</a>
+          <% } else { %>
+            <p><%= session.user.alias %></p>
+            <a href="/logout">Logout</a>
+          <% } %>
+        </li>
       </ul>
     </nav>
     <main>
