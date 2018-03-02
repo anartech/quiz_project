@@ -9,7 +9,7 @@
 <% } %>
 <form method="post" action="/quizes/<%= quizID %>/comments">
   <label>Comment: </label>
-  <input type="text" name="comment[text]" value="Add your comment here"/>
+  <input type="text" name="comment[text]" value="Add your comment here" autofocus/>
   <a href="/quizes"><button type="button">Cancel</button></a>
   <input type="submit" value="Send"/>
 </form>

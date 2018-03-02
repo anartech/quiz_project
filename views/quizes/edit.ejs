@@ -9,7 +9,7 @@
 <% } %>
 <form method="post" action="/quizes/<%= quiz.id %>?_method=put">
   <label>Question: </label>
-  <input type="text" name="quiz[question]" value="<%= quiz.question %>"/>
+  <input type="text" name="quiz[question]" value="<%= quiz.question %>" autofocus/>
   <label>Answer: </label>
   <input type="text" name="quiz[answer]" value="<%= quiz.answer %>"/>
   <a href="/quizes"><button type="button">Cancel</button></a>
