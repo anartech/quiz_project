@@ -4,11 +4,9 @@ var apiCtrler = require('../controllers/api_ctrler');
 var cors = require('cors');
 
 var corsOptions = {
-  // origin: 'http://localhost:3000'
-  // origin: 'https://react-app-mc.herokuapp.com'
+  origin: process.env.REACT_APP_URL
 };
 
-// router.get('/all', cors(corsOptions), apiCtrler.all);
-router.get('/all', cors(), apiCtrler.all);
+router.get('/all', cors(corsOptions), apiCtrler.all);
 
 module.exports = router;
