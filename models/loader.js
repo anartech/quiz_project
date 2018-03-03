@@ -100,7 +100,7 @@ connection.sync().then(function() {
       });
       apicomments.create({
         user: "Matías",
-        description: "This is a test"
+        description: "This is a test."
       }).then(function(){
         console.log('Initialized APIComments table');
       });
