@@ -7,6 +7,8 @@ if (!(process.env.DATABASE_URL)) {
   process.env.DATABASE_URL = 'sqlite://:@:/';
 }
 console.log(process.env.DATABASE_URL);
+console.log('Environment:' + JSON.stringify(process.env));
+
 
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*)\:(.*)@(.*)\:(.*)\/(.*)/);
 var db_name   = (url[6]||null);
