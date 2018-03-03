@@ -4,7 +4,7 @@ var apiCtrler = require('../controllers/api_ctrler');
 var cors = require('cors');
 
 var corsOptions = {
-  origin: 'https://react-app-mc.herokuapp.com/',
+  origin: 'react-app-mc.herokuapp.com/:1',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
