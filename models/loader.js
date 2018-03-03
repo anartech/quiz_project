@@ -95,8 +95,6 @@ connection.sync().then(function() {
       apicomments.create({
         author: "Bending Bender",
         body: "Excellent Stuff!!"
-      }).then(function(){
-        console.log('Initialized APIComments table');
       });
       apicomments.create({
         author: "Matías",
