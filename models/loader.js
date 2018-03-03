@@ -98,6 +98,12 @@ connection.sync().then(function() {
       }).then(function(){
         console.log('Initialized APIComments table');
       });
+      apicomments.create({
+        user: "Matías",
+        description: "This is a test"
+      }).then(function(){
+        console.log('Initialized APIComments table');
+      });
     };
   });
 });
