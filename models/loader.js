@@ -89,18 +89,18 @@ connection.sync().then(function() {
     //If empty, add a row
     if(count === 0) {
       apicomments.create({
-        user: "Morgan McCircuit",
-        description: "Great picture"
+        author: "Morgan McCircuit",
+        body: "Great picture"
       });
       apicomments.create({
-        user: "Bending Bender",
-        description: "Excellent Stuff!!"
+        author: "Bending Bender",
+        body: "Excellent Stuff!!"
       }).then(function(){
         console.log('Initialized APIComments table');
       });
       apicomments.create({
-        user: "Matías",
-        description: "This is a test."
+        author: "Matías",
+        body: "This is a test."
       }).then(function(){
         console.log('Initialized APIComments table');
       });
