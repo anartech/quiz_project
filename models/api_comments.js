@@ -2,10 +2,10 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define(
     'APIComment', {
-      user: {
+      author: {
         type: DataTypes.STRING
       },
-      description: {
+      body: {
         type: DataTypes.STRING
       }
     }
