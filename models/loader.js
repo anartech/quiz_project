@@ -39,6 +39,8 @@ var quiz = connection.import(path.join(__dirname, 'quiz'));
 var comments = connection.import(path.join(__dirname, 'comments'));
 //Import table definition in users.js
 var users = connection.import(path.join(__dirname, 'users'));
+//Import table definition in api_comments.js
+var apicomments = connection.import(path.join(__dirname, 'api_comments'));
 
 comments.belongsTo(quiz);
 comments.belongsTo(users);
@@ -48,6 +50,7 @@ users.hasMany(comments);
 exports.quiz = quiz;
 exports.comments = comments;
 exports.users = users;
+exports.apicomments = apicomments;
 
 //Create and init tables
 connection.sync().then(function() {
@@ -79,6 +82,21 @@ connection.sync().then(function() {
         password: "1234"
       }).then(function(){
         console.log('Initialized Users table');
+      });
+    };
+  });
+  apicomments.count().then(function (count){
+    //If empty, add a row
+    if(count === 0) {
+      apicomments.create({
+        user: "Morgan McCircuit",
+        description: "Great picture"
+      });
+      apicomments.create({
+        user: "Bending Bender",
+        description: "Excellent Stuff!!"
+      }).then(function(){
+        console.log('Initialized APIComments table');
       });
     };
   });
