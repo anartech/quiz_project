@@ -22,12 +22,12 @@ app.set('view engine', 'ejs');
 
 app.use(partials());
 
-var corsOptions = {
-  origin: process.env.REACT_APP_URL,
-  methods: ['GET','DELETE','POST']
-};
-
-app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: process.env.REACT_APP_URL,
+//   methods: ['GET','DELETE','POST']
+// };
+//
+// app.use(cors(corsOptions));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
