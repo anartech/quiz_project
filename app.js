@@ -35,7 +35,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 //Use 'Quiz 2015' as seed to encrypt the cookies data
-app.use(cookieParser('Quiz 2015'));
+app.use(cookieParser('Quiz 2018'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session());
@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
   if (!req.path.match(/\/login|\/logout|\/users\/create|\/users\/signup/)) {
     req.session.redir = req.path;
   } else {
-    req.session.redir = '/quizes';
+    req.session.redir = '/week';
   }
   res.locals.session = req.session;
   next();
